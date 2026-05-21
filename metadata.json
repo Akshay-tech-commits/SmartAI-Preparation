@@ -1,0 +1,6 @@
+{
+  "name": "SmartPrep AI - Premium Placement Suite",
+  "description": "An elite AI-powered ecosystem for career mastery. Analyze resumes, crush technical interviews, and track your path to top-tier tech companies with precision.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

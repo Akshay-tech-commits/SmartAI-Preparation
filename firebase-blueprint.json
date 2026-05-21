@@ -1,0 +1,83 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "lastLogin": { "type": "string", "format": "date-time" },
+        "xp": { "type": "number" },
+        "streak": { "type": "number" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Resume": {
+      "title": "Resume",
+      "description": "Analyzed resume data",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "fileName": { "type": "string" },
+        "fileUrl": { "type": "string" },
+        "atsScore": { "type": "number" },
+        "analysis": { "type": "object" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "atsScore"]
+    },
+    "Interview": {
+      "title": "Interview",
+      "description": "Mock interview session",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "role": { "type": "string" },
+        "round": { "type": "string" },
+        "transcript": { "type": "array" },
+        "feedback": { "type": "object" },
+        "score": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "role"]
+    },
+    "CodingSubmission": {
+      "title": "Coding Submission",
+      "description": "User submission for a coding problem",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "problemId": { "type": "string" },
+        "code": { "type": "string" },
+        "language": { "type": "string" },
+        "status": { "type": "string" },
+        "runtime": { "type": "number" },
+        "memory": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User documents"
+    },
+    "/users/{userId}/resumes/{resumeId}": {
+      "schema": "Resume",
+      "description": "User resumes"
+    },
+    "/users/{userId}/interviews/{interviewId}": {
+      "schema": "Interview",
+      "description": "User interviews"
+    },
+    "/users/{userId}/submissions/{submissionId}": {
+      "schema": "CodingSubmission",
+      "description": "User coding submissions"
+    }
+  }
+}
